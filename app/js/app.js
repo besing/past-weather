@@ -19,8 +19,10 @@ app.controller('WeatherCtrl', function($scope, $http) {
         .then(function(response) {
             $scope.weatherInfo = response.data;
 
+            var currentWeatherIcon = response.data.currently.icon;
+
             var iconImgCount = 0;
-            switch (response.data.currently.icon) {
+            switch (currentWeatherIcon) {
                 // current number of pictures for every weather state ('icon')
                 // (needs to be modified each time a picture gets added/removed)
                 // (automation would be nice but difficult since JS = client side
@@ -69,6 +71,8 @@ app.controller('WeatherCtrl', function($scope, $http) {
                 randIconImg = Math.floor(Math.random() * iconImgCount + 1);
             }
 
-            $scope.currentIconImgCount = randIconImg;
+            $scope.bgImgCurrentWeather = {
+                'background-image': 'url(img/bg/' + currentWeatherIcon + '_' + randIconImg + '.jpg)'
+            };
         });
 });

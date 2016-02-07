@@ -1,3 +1,12 @@
+html {
+  height: 100%; }
+
+body {
+  background-size: cover;
+  background-position: center top;
+  height: 100%;
+  color: #ddd; }
+
 img.current-weather {
   width: 250px;
   height: auto; }

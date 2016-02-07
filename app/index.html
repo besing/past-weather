@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html ng-app="wetterLuchs">
 <head>
-  <title>WETTERLUCHS</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+	<title>WETTERLUCHS</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <div class="container">
-    <h1>Wetterluchs</h1>
-    <div class="col-sm-12 col-md-6 col-md-offset-3" ng-controller="WeatherCtrl">
-      <p>Deine IP: {{ ipCheck.ip }}</p>
-      <p>City: {{ ipCheck.city }}</p>
-      <p>
-          Aktuelles Wetter:
-          {{ weatherInfo.currently.summary }}
-          ({{ weatherInfo.currently.temperature }} Grad Celsius)
-      </p>
-      <p>
-          Lokalzeit:
-          {{ weatherInfo.currently.time * 1000 | date:'medium' }} <!--TODO: Safari Interpolate Error-->
-          <!--Automatischer(?) Browser Cache! Sendet "bloß" alle paar Minuten neuen Request, deswegen "current time" auch nie ganz genau -> Caching aber gut-->
-      </p>
-      <p>
-          Icon:
-          {{ weatherInfo.currently.icon }},
-		  <img ng-src="img/bg/{{ weatherInfo.currently.icon }}_{{ currentIconImgCount }}.jpg" class="current-weather" />
-      </p>
-    </div>
-  </div>
-  <script src="js/angular.min.js" type="text/javascript"></script>
-  <script src="js/app.js" type="text/javascript"></script>
-  <!--<script src="js/jquery.min.js" type="text/javascript"></script>-->
+<body ng-controller="WeatherCtrl" ng-style="bgImgCurrentWeather">
+	<div class="container">
+		<h1>Wetterluchs</h1>
+		<div class="col-sm-12 col-md-6 col-md-offset-3">
+			<p>Deine IP: {{ ipCheck.ip }}</p>
+			<p>City: {{ ipCheck.city }}</p>
+			<p>
+				Aktuelles Wetter:
+				{{ weatherInfo.currently.summary }}
+				({{ weatherInfo.currently.temperature }} Grad Celsius)
+			</p>
+			<p>
+				Lokalzeit:
+				{{ weatherInfo.currently.time * 1000 | date:'medium' }} <!--TODO: Safari Interpolate Error-->
+				<!--Automatischer(?) Browser Cache! Sendet "bloß" alle paar Minuten neuen Request, deswegen "current time" auch nie ganz genau -> Caching aber gut-->
+			</p>
+			<p>
+				Icon:
+				{{ weatherInfo.currently.icon }},
+				<img ng-src="img/bg/{{ weatherInfo.currently.icon }}_{{ currentIconImgCount }}.jpg" class="current-weather" />
+			</p>
+		</div>
+	</div>
+	<script src="js/angular.min.js" type="text/javascript"></script>
+	<script src="js/app.js" type="text/javascript"></script>
+	<!--<script src="js/jquery.min.js" type="text/javascript"></script>-->
 </body>
 </html>
