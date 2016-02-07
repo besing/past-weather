@@ -9,7 +9,7 @@
 <body>
   <div class="container">
     <h1>Past Weather</h1>
-    <div class="col-sm-12 col-md-6 col-md-offset-3" ng-controller="ComboCtrl">
+    <div class="col-sm-12 col-md-6 col-md-offset-3" ng-controller="WeatherCtrl">
       <p>Deine IP: {{ ipCheck.ip }}</p>
       <p>City: {{ ipCheck.city }}</p>
       <p>
@@ -19,7 +19,13 @@
       </p>
       <p>
           Lokalzeit:
-          {{ weatherInfo.currently.time * 1000 | date:'medium' }}
+          {{ weatherInfo.currently.time * 1000 | date:'medium' }} <!--TODO: Safari Interpolate Error-->
+          <!--Automatischer(?) Browser Cache! Sendet "bloß" alle paar Minuten neuen Request, deswegen "current time" auch nie ganz genau -> Caching aber gut-->
+      </p>
+      <p>
+          Icon:
+          {{ weatherInfo.currently.icon }},
+		  <!--<img ng-src="{{ current }}.jpg" />-->
       </p>
     </div>
   </div>
