@@ -1,5 +1,5 @@
-//@import url(https://fonts.googleapis.com/css?family=Dosis:300,500,600,700);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800);
+//@import url(https://fonts.googleapis.com/css?family=Dosis:300,500,600,700);
 
 
 // Vars for Bootstrap (including BS SASS a bit complicated)
@@ -7,10 +7,6 @@ $screen-sm: 768px;
 $screen-md: 992px;
 $screen-lg: 1200px;
 
-
-html {
-
-}
 
 body {
     min-height: 100vh; // works better than %
@@ -20,10 +16,11 @@ body {
     font-family: 'Open Sans', sans-serif;
     -webkit-font-smoothing: antialiased; // Safari (Thin) Font Legibility
 
-    &::selection,
-    &::-moz-selection {
-        color: red;
-        background: green;
+    ::-moz-selection {
+        background: #4dae97;
+    }
+    ::selection {
+        background: #4dae97;
     }
 
     a {
@@ -103,5 +100,13 @@ body {
         background: rgba(#fff, 0.1);
         text-align: center;
         font-size: 0.9em;
+    }
+
+    .modal {
+        color: #555;
+
+        a {
+            color: inherit;
+        }
     }
  }

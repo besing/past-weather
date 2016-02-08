@@ -6,9 +6,10 @@ body {
   color: #ddd;
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased; }
-  body::selection, body::-moz-selection {
-    color: red;
-    background: green; }
+  body ::-moz-selection {
+    background: #4dae97; }
+  body ::selection {
+    background: #4dae97; }
   body a {
     color: #fff; }
     body a:hover, body a:focus {
@@ -58,5 +59,9 @@ body {
     background: rgba(255, 255, 255, 0.1);
     text-align: center;
     font-size: 0.9em; }
+  body .modal {
+    color: #555; }
+    body .modal a {
+      color: inherit; }
 
 /*# sourceMappingURL=style.css.map */
