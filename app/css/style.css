@@ -8,38 +8,45 @@ body {
   background-position: center top;
   color: #ddd;
   font-family: 'Open Sans', sans-serif; }
-  body .container {
+  body a {
+    color: #fff; }
+    body a:hover, body a:focus {
+      color: #fff; }
+  body .bg-darker {
     height: 100%;
     background: rgba(0, 0, 0, 0.3); }
-    body .container h1 {
+    body .bg-darker h1 {
       margin: 10vh 0 7vh;
       font-size: 6vw;
       font-weight: 800;
       letter-spacing: 3vw;
       text-transform: uppercase; }
       @media (min-width: 768px) {
-        body .container h1 {
+        body .bg-darker h1 {
           font-size: 36px;
           letter-spacing: 13px; } }
-    body .container .current-weather {
+    body .bg-darker .current-weather {
       font-size: 24px; }
-      body .container .current-weather p {
+      body .bg-darker .current-weather p {
         margin-bottom: 16px; }
-      body .container .current-weather .city {
+      body .bg-darker .current-weather .city {
         margin: 0 0 7vh;
         font-weight: 600;
         text-transform: uppercase; }
-        body .container .current-weather .city span {
+        body .bg-darker .current-weather .city span {
           font-size: 0.9em;
           opacity: 0.7; }
-      body .container .current-weather .data-label {
+      body .bg-darker .current-weather .data-label {
         display: block;
         margin-bottom: 4px;
         font-size: 0.7em;
         font-weight: 300;
         opacity: 0.9; }
-    body .container .meta-info {
+    body .bg-darker .meta-info {
       position: absolute;
-      bottom: 0; }
+      bottom: 0;
+      width: 100%;
+      margin: 12px 0;
+      text-align: center; }
 
 /*# sourceMappingURL=style.css.map */

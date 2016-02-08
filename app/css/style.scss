@@ -19,7 +19,16 @@ body {
     color: #ddd;
     font-family: 'Open Sans', sans-serif;
 
-    .container {
+    a {
+        color: #fff;
+
+        &:hover,
+        &:focus {
+            color: #fff;
+        }
+    }
+
+    .bg-darker {
         height: 100%;
         background: rgba(#000, 0.3);
 
@@ -70,6 +79,9 @@ body {
         .meta-info {
             position: absolute;
             bottom: 0;
+            width: 100%;
+            margin: 12px 0;
+            text-align: center;
         }
     }
  }
