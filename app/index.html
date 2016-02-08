@@ -16,14 +16,21 @@
 					<span class="glyphicon glyphicon-map-marker"></span>
 				</h2>
 				<p>
-					Heute ist der
-					{{ weatherInfo.currently.time * 1000 | date:'d. MMMM yyyy (H:mm)' }} <!--TODO: Safari Interpolate Error-->
+					<span class="data-label">Heute ist der
+						{{ weatherInfo.currently.time * 1000 | date:'d.M.yyyy' }}
+						{{ weatherInfo.currently.time * 1000 | date:'(H:mm)' }}
+					</span>
+					<!--TODO: Safari Interpolate Error-->
+					<!--TODO: Add internationalization (e.g. translation for month names..)-->
 					<!--Automatischer(?) Browser Cache! Sendet "bloß" alle paar Minuten neuen Request, deswegen "current time" auch nie ganz genau -> Caching aber gut-->
 				</p>
 				<p>
-					Aktuelles Wetter:
-					{{ weatherInfo.currently.summary }}
-					({{ weatherInfo.currently.temperature | number:1 }}&deg;C)
+					<span class="data-label">Was macht das Wetter gerade?</span>
+					<span class="data-value">
+						{{ weatherInfo.currently.temperature | number:1 }}&deg;C,
+						{{ weatherInfo.currently.summary }}
+					</span>
+
 				</p>
 			</div>
 		</div>
