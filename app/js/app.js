@@ -72,7 +72,7 @@ app.controller('WeatherCtrl', function($scope, $http) {
             }
 
             $scope.bgImgCurrentWeather = {
-                'background-image': 'url(img/bg/' + currentWeatherIcon + '_' + randIconImg + '.jpg)'
+                'background-image': 'url(img/bg/' + currentWeatherIcon + '_' + randIconImg + '.jpeg)'
             };
         });
 });

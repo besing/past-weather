@@ -1,15 +1,60 @@
+//@import url(https://fonts.googleapis.com/css?family=Dosis:300,500,600,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800);
+
+
+// Vars for Bootstrap (including BS SASS a bit complicated)
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-lg: 1200px;
+
+
 html {
     height: 100%;
 }
 
 body {
+    height: 100%;
     background-size: cover;
     background-position: center top;
-    height: 100%;
     color: #ddd;
-}
+    font-family: 'Open Sans', sans-serif;
 
-img.current-weather {
-    width: 250px;
-    height: auto;
-}
+    .container {
+        height: 100%;
+        background: rgba(#000, 0.3);
+
+        h1 {
+            margin: 10vh 0 7vh;
+            font-size: 6vw;
+            font-weight: 800;
+            letter-spacing: 3vw;
+            text-transform: uppercase;
+
+            @media (min-width: $screen-sm) {
+                font-size: 36px;
+                letter-spacing: 13px;
+            }
+        }
+
+        .current-weather {
+            font-size: 24px;
+            font-weight: 300;
+
+            .city {
+                margin: 0 0 7vh;
+                font-weight: 600;
+                text-transform: uppercase;
+
+                span {
+                    font-size: 0.9em;
+                    opacity: 0.7;
+                }
+            }
+        }
+
+        .meta-info {
+            position: absolute;
+            bottom: 0;
+        }
+    }
+ }
