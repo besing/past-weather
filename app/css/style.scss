@@ -1,5 +1,5 @@
 //@import url(https://fonts.googleapis.com/css?family=Dosis:300,500,600,700);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800);
 
 
 // Vars for Bootstrap (including BS SASS a bit complicated)
@@ -9,15 +9,22 @@ $screen-lg: 1200px;
 
 
 html {
-    height: 100%;
+
 }
 
 body {
-    height: 100%;
+    min-height: 100vh; // works better than %
     background-size: cover;
     background-position: center top;
     color: #ddd;
     font-family: 'Open Sans', sans-serif;
+    -webkit-font-smoothing: antialiased; // Safari (Thin) Font Legibility
+
+    &::selection,
+    &::-moz-selection {
+        color: red;
+        background: green;
+    }
 
     a {
         color: #fff;
@@ -28,61 +35,73 @@ body {
         }
     }
 
+    .text-shadow {
+        text-shadow: 1px 2px 1px rgba(#000, 0.5);
+    }
+
     .bg-darker {
-        height: 100%;
+        min-height: 100vh;
+        position: relative; // for footer positioning
         background: rgba(#000, 0.3);
+        padding-bottom: 50px;
+    }
 
-        h1 {
-            margin: 10vh 0 7vh;
-            font-size: 6vw;
-            font-weight: 800;
-            letter-spacing: 3vw;
+    h1 {
+        margin: 10vh 0 7vh;
+        font-size: 6vw;
+        font-weight: 800;
+        letter-spacing: 3vw;
+        text-transform: uppercase;
+        @extend .text-shadow;
+
+        @media (min-width: $screen-sm) {
+            font-size: 36px;
+            letter-spacing: 13px;
+        }
+    }
+
+    .weather-info {
+        font-size: 24px;
+
+        p {
+            margin-bottom: 30px;
+        }
+
+        .city {
+            margin: 0 0 7vh;
             text-transform: uppercase;
+            letter-spacing: 8px;
+            @extend .text-shadow;
 
-            @media (min-width: $screen-sm) {
-                font-size: 36px;
-                letter-spacing: 13px;
+            .glyphicon {
+                font-size: 0.9em;
+                position: relative;
+                top: -10px;
+                left: -5px;
+                -webkit-transform: rotate(40deg);
+                transform: rotate(40deg);
             }
         }
 
-        .current-weather {
-            font-size: 24px;
-
-            p {
-                margin-bottom: 16px;
-            }
-
-            .city {
-                margin: 0 0 7vh;
-                font-weight: 600;
-                text-transform: uppercase;
-
-                span {
-                    font-size: 0.9em;
-                    opacity: 0.7;
-                }
-            }
-
-            .data-label {
-                display: block;
-                margin-bottom: 4px;
-                font-size: 0.7em;
-                font-weight: 300;
-                opacity: 0.9;
-            }
-
-            .data-value {
-
-            }
+        .data-label {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.7em;
+            opacity: 0.9;
         }
 
-        .meta-info {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            margin-top: 12px;
-            margin-bottom: 12px;
-            text-align: center;
+        .data-value {
+            @extend .text-shadow;
         }
+    }
+
+    .meta-info {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 12px 0;
+        background: rgba(#fff, 0.1);
+        text-align: center;
+        font-size: 0.9em;
     }
  }
