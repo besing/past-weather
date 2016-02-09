@@ -52,8 +52,8 @@ body {
         @extend .text-shadow;
 
         @media (min-width: $screen-sm) {
-            font-size: 36px;
-            letter-spacing: 13px;
+            font-size: 44px;
+            letter-spacing: 20px;
         }
     }
 
@@ -64,16 +64,24 @@ body {
             margin-bottom: 30px;
         }
 
-        .city {
+        h2.city {
             margin: 0 0 7vh;
+            font-size: 26px;
             text-transform: uppercase;
             letter-spacing: 8px;
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto;
             @extend .text-shadow;
+
+            @media (min-width: $screen-sm) {
+                font-size: 30px;
+            }
 
             .glyphicon {
                 font-size: 0.9em;
                 position: relative;
-                top: -10px;
                 left: -5px;
                 -webkit-transform: rotate(40deg);
                 transform: rotate(40deg);

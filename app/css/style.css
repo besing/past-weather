@@ -14,7 +14,7 @@ body {
     color: #fff; }
     body a:hover, body a:focus {
       color: #fff; }
-  body .text-shadow, body h1, body .weather-info .city, body .weather-info .data-value {
+  body .text-shadow, body h1, body .weather-info h2.city, body .weather-info .data-value {
     text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5); }
   body .bg-darker {
     min-height: 100vh;
@@ -29,20 +29,27 @@ body {
     text-transform: uppercase; }
     @media (min-width: 768px) {
       body h1 {
-        font-size: 36px;
-        letter-spacing: 13px; } }
+        font-size: 44px;
+        letter-spacing: 20px; } }
   body .weather-info {
     font-size: 24px; }
     body .weather-info p {
       margin-bottom: 30px; }
-    body .weather-info .city {
+    body .weather-info h2.city {
       margin: 0 0 7vh;
+      font-size: 26px;
       text-transform: uppercase;
-      letter-spacing: 8px; }
-      body .weather-info .city .glyphicon {
+      letter-spacing: 8px;
+      -webkit-hyphens: auto;
+      -moz-hyphens: auto;
+      -ms-hyphens: auto;
+      hyphens: auto; }
+      @media (min-width: 768px) {
+        body .weather-info h2.city {
+          font-size: 30px; } }
+      body .weather-info h2.city .glyphicon {
         font-size: 0.9em;
         position: relative;
-        top: -10px;
         left: -5px;
         -webkit-transform: rotate(40deg);
         transform: rotate(40deg); }
