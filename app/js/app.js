@@ -29,7 +29,7 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
                 // (automation would be nice but difficult since JS = client side
                 // and no access to files on the server (.jpg))
                 case 'clear-day':
-                    iconImgCount = 6;
+                    iconImgCount = 7;
                     break;
                 case 'clear-night':
                     iconImgCount = 4;
@@ -41,7 +41,7 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
                     iconImgCount = 4;
                     break;
                 case 'partly-cloudy-day':
-                    iconImgCount = 2;
+                    iconImgCount = 4;
                     break;
                 case 'partly-cloudy-night':
                     iconImgCount = 1;
