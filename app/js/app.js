@@ -126,4 +126,24 @@ app.factory('timeAgo', function() {
     }
 });
 
+app.filter('tempCelsius', function() {
+    return function(input) {
+        var output;
+        if (input == '') {
+            output = '';
+        } else {
+            output = input + '\xB0C';
+        }
+        return output;
+    }
+});
 
+app.directive('myDataLoader', function() {
+   return {
+       restrict: 'E',
+       scope: {
+           hideIf: '=data' // Connection to template (below) --> makes directive dynamic
+       },
+       template: '<span class="data-label" ng-hide="hideIf"><em><small>(lade Daten...)</small></em></span>'
+   };
+});

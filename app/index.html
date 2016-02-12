@@ -17,18 +17,22 @@
 					</h2>
 					<p>
 						<span class="data-label">Heute ist der</span>
-						<span class="data-value">
+
+						<my-data-loader data="currentWeather"></my-data-loader>
+
+						<span class="data-value" ng-show="currentWeather">
 							{{ currentWeather.currently.time * 1000 | date:'d.M.yyyy' }}
 						</span>
-						<!--TODO: Safari Interpolate Error-->
-						<!--TODO: Add internationalization (e.g. translation for month names..)-->
 						<!--Automatischer(?) Browser Cache! Sendet "bloß" alle paar Minuten neuen Request, deswegen "current time" auch nie ganz genau; klappt aber wohl bloß lokal-->
 					</p>
 					<p>
 						<span class="data-label">Was macht das Wetter gerade?</span>
-						<span class="data-value">
-							{{ currentWeather.currently.temperature | number:0 }}&deg;C
-							<small>(gef&uuml;hlt {{ currentWeather.currently.apparentTemperature | number:0 }}&deg;C)</small><br />
+
+						<my-data-loader data="currentWeather"></my-data-loader>
+
+						<span class="data-value" ng-show="currentWeather">
+							{{ currentWeather.currently.temperature | number:0 | tempCelsius}}
+							<small>(gef&uuml;hlt {{ currentWeather.currently.apparentTemperature | number:0 | tempCelsius}})</small><br />
 							{{ currentWeather.currently.summary }}
 						</span>
 					</p>
@@ -43,33 +47,42 @@
 					<p>
 						<span class="data-label">
 							Wetter heute vor <strong>1 Woche</strong>
-							<small>({{ weather1week.currently.time * 1000 | date:'d.M.yyyy' }})</small>
+							<small ng-show="weather1week">({{ weather1week.currently.time * 1000 | date:'d.M.yyyy' }})</small>
 						</span>
-						<span class="data-label">
-							{{ weather1week.currently.temperature | number:0 }}&deg;C
-							<small>({{ weather1week.currently.apparentTemperature | number:0 }}&deg;C),</small>
+
+						<my-data-loader data="weather1week"></my-data-loader>
+
+						<span class="data-label" ng-show="weather1week">
+							{{ weather1week.currently.temperature | number:0 | tempCelsius}}
+							<small>({{ weather1week.currently.apparentTemperature | number:0 | tempCelsius}}),</small>
 							{{ weather1week.currently.summary }}
 						</span>
 					</p>
 					<p>
 						<span class="data-label">
 							Wetter heute vor <strong>10 Jahren</strong>
-							<small>({{ weather10years.currently.time * 1000 | date:'d.M.yyyy' }})</small>
+							<small ng-show="weather10years">({{ weather10years.currently.time * 1000 | date:'d.M.yyyy' }})</small>
 						</span>
-						<span class="data-label">
-							{{ weather10years.currently.temperature | number:0 }}&deg;C
-							<small>({{ weather10years.currently.apparentTemperature | number:0 }}&deg;C),</small>
+
+						<my-data-loader data="weather10years"></my-data-loader>
+
+						<span class="data-label" ng-show="weather10years">
+							{{ weather10years.currently.temperature | number:0 | tempCelsius}}
+							<small>({{ weather10years.currently.apparentTemperature | number:0 | tempCelsius}}),</small>
 							{{ weather10years.currently.summary }}
 						</span>
 					</p>
 					<p>
 						<span class="data-label">
 							Wetter heute vor <strong>25 Jahren</strong>
-							<small>({{ weather25years.currently.time * 1000 | date:'d.M.yyyy' }})</small>
+							<small ng-show="weather25years">({{ weather25years.currently.time * 1000 | date:'d.M.yyyy' }})</small>
 						</span>
-						<span class="data-label">
-							{{ weather25years.currently.temperature | number:0 }}&deg;C
-							<small>({{ weather25years.currently.apparentTemperature | number:0 }}&deg;C),</small>
+
+						<my-data-loader data="weather25years"></my-data-loader>
+
+						<span class="data-label" ng-show="weather25years">
+							{{ weather25years.currently.temperature | number:0 | tempCelsius }}
+							<small>({{ weather25years.currently.apparentTemperature | number:0 | tempCelsius }}), </small>
 							{{ weather25years.currently.summary }}
 						</span>
 					</p>
