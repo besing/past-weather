@@ -1,5 +1,5 @@
 ## Wetterluchs 
-### v0.1 alpha
+### v0.2
 
 http://wetterluchs.benjaminsinger.de
 

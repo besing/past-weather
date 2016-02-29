@@ -8,14 +8,12 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
     navigator.geolocation.getCurrentPosition(function(pos) {
         // on success (=first case)
         var geoLat = pos.coords.latitude;
-        console.log('Lat: ' + geoLat + ' deg');
-
         var geoLong = pos.coords.longitude;
-        console.log('Long: ' + geoLong + ' deg');
-
         $scope.geoCoordinates = geoLat + ',' + geoLong;
 
-        $http({method: 'GET', url: 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + $scope.geoCoordinates + '&result_type=locality&key=AIzaSyCg3yL1Xhg-f9twY7PS7kDLzM-0SKBwHCY'})
+        $http({
+            method: 'GET',
+            url: 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + $scope.geoCoordinates + '&result_type=locality&key=AIzaSyCg3yL1Xhg-f9twY7PS7kDLzM-0SKBwHCY'})
 
             .then(function (response) {
                 var getCityObj = response.data;
@@ -27,7 +25,7 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
 // API CALL 2 (Current Weather)
                 return $http({
                     method: 'JSONP',
-                    url: 'https://api.forecast.io/forecast/1d96cc3ef09464128ca17edb27b686c6/' + $scope.geoCoordinates + '?units=si&lang=de&callback=JSON_CALLBACK'});
+                    url: 'https://api.forecast.io/forecast/1d96cc3ef09464128ca17edb27b686c6/' + $scope.geoCoordinates + '?units=si&lang=de&callback=JSON_CALLBACK'})
             })
 
             .then(function(response) {
@@ -35,58 +33,76 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
 
                 var currentWeatherIcon = response.data.currently.icon;
 
-                var iconImgCount = 0;
+                var unsplashImgQuery = '';
+
                 switch (currentWeatherIcon) {
-                    // current number of pictures for every weather state ('icon')
-                    // (needs to be modified each time a picture gets added/removed)
-                    // (automation would be nice but difficult since JS = client side
-                    // and no access to files on the server (.jpg))
                     case 'clear-day':
-                        iconImgCount = 7;
+                        unsplashImgQuery = 'sun';
                         break;
                     case 'clear-night':
-                        iconImgCount = 4;
+                        unsplashImgQuery = 'night';
                         break;
                     case 'cloudy':
-                        iconImgCount = 1;
+                        unsplashImgQuery = 'cloudy';
                         break;
                     case 'fog':
-                        iconImgCount = 4;
+                        unsplashImgQuery = 'fog';
                         break;
                     case 'partly-cloudy-day':
-                        iconImgCount = 4;
+                        unsplashImgQuery = 'clouds';
+                        // not ideal search term
                         break;
                     case 'partly-cloudy-night':
-                        iconImgCount = 1;
+                        unsplashImgQuery = 'night';
+                        // not ideal search term
                         break;
                     case 'rain':
-                        iconImgCount = 2;
+                        unsplashImgQuery = 'rain';
                         break;
                     case 'sleet':
-                        iconImgCount = 1;
+                        unsplashImgQuery = 'snow';
+                        // not ideal search term
                         break;
                     case 'snow':
-                        iconImgCount = 3;
+                        unsplashImgQuery = 'snow';
                         break;
                     case 'wind':
-                        iconImgCount = 2;
+                        unsplashImgQuery = 'wind';
                         break;
                     default:
                         console.log('Forecast Icon Error!');
                 }
 
-                var randIconImg;
+                return $http({
+                    method: 'GET',
+                    url: 'https://api.unsplash.com/photos/random?query=' + unsplashImgQuery + '&client_id=5a84b2ae1a2e983ee9e8850ac318152957f24614e0acb83896f7ba381ed6601f'
+                })
+            })
 
-                if (iconImgCount == 0) {
-                    console.log('No Forecast Icon -- no different images!');
-                } else if (iconImgCount == 1) {
-                    randIconImg = 1;
+            .then(function(response) {
+
+                //console.log('Unsplash Img Query: ', response.data);
+                //console.log('Unsplash Img Large: ', response.data.urls.regular);
+                //console.log('Photo taken by: ', response.data.user.name);
+                //console.log('Photographer URL: ', response.data.user.links.html);
+                //console.log('Photo main color: ', response.data.color);
+
+                $scope.unsplashPhoto = response.data;
+
+                var unsplashPhotoLocation;
+
+                if (response.data.location) {
+                    unsplashPhotoLocation = response.data.location.city + ', ' + response.data.location.country;
                 } else {
-                    randIconImg = Math.floor(Math.random() * iconImgCount + 1);
+                    unsplashPhotoLocation = 'No Photo Location provided'
                 }
 
+                console.log('Photo location: ' + unsplashPhotoLocation); // TODO: Fallback if City doesn't exist (regularly!) (..or drop completely)
+
+                var unsplashRandImgUrl = response.data.urls.regular; // regular = 1080 w
+
                 $scope.bgImgCurrentWeather = {
-                    'background-image': 'url(img/bg/' + currentWeatherIcon + '_' + randIconImg + '.jpeg)'
+                    'background-image': 'url(' + unsplashRandImgUrl + ')'
                 };
 
 // API CALL 3 (Historical Weather I)

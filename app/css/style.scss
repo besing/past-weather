@@ -10,6 +10,7 @@ $screen-lg: 1200px;
 
 body {
     min-height: 100vh; // works better than %
+    background-color: #000;
     background-size: cover;
     background-position: center top;
     color: #ddd;
@@ -40,7 +41,7 @@ body {
         min-height: 100vh;
         position: relative; // for footer positioning
         background: rgba(#000, 0.3);
-        padding-bottom: 50px;
+        padding-bottom: 110px;
     }
 
     h1 {
@@ -100,7 +101,7 @@ body {
         }
     }
 
-    .meta-info {
+    .footer {
         position: absolute;
         bottom: 0;
         width: 100%;
@@ -108,6 +109,10 @@ body {
         background: rgba(#fff, 0.1);
         text-align: center;
         font-size: 0.9em;
+
+        p:last-of-type {
+            margin-bottom: 0;
+        }
     }
 
     .modal {
