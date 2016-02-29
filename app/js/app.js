@@ -147,3 +147,30 @@ app.directive('myDataLoader', function() {
        template: '<span class="data-label" ng-hide="hideIf"><em><small>(lade Daten...)</small></em></span>'
    };
 });
+
+navigator.geolocation.getCurrentPosition(function(pos) {
+
+    var geoLat = pos.coords.latitude;
+    console.log('Lat: ' + geoLat + ' deg');
+
+    var geoLong = pos.coords.longitude;
+    console.log('Long: ' + geoLong + ' deg');
+
+    var geoAlt = pos.coords.altitude;
+    console.log('Altitude: ' + geoAlt + ' m');
+
+    var geoAccur = pos.coords.accuracy;
+    console.log('Accuracy: ' + geoAccur + ' m');
+
+    var geoAltAccur = pos.coords.altitudeAccuracy;
+    console.log('AltAccuracy: ' + geoAltAccur + ' m');
+
+    var geoHeading = pos.coords.heading;
+    console.log('Heading: ' + geoHeading + ' deg');
+
+    var geoSpeed = pos.coords.speed;
+    console.log('Speed: ' + geoSpeed + ' m/s');
+
+}, function() {
+    console.log('Konnte keine Position ermitteln.');
+});
