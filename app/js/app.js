@@ -97,7 +97,7 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
                     unsplashPhotoLocation = 'No Photo Location provided'
                 }
 
-                console.log('Photo location: ' + unsplashPhotoLocation); // TODO: Fallback if City doesn't exist (regularly!) (..or drop completely)
+                //console.log('Photo location: ' + unsplashPhotoLocation); // TODO: Fallback if City doesn't exist (regularly!) (..or drop completely)
 
                 var unsplashRandImgUrl = response.data.urls.regular; // regular = 1080 w
 

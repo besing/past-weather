@@ -13,6 +13,7 @@
 				<h1 class="text-center">Wetterluchs</h1>
 				<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
 					<h2 class="city text-center">
+						<!--TODO: wird beim laden immer noch kurz als Code angezeigt...-->
 						{{ getCityName == '' ? geoCoordinates : getCityName }}<span class="glyphicon glyphicon-map-marker"></span>
 					</h2>
 					<p>
@@ -53,8 +54,7 @@
 						<my-data-loader data="weather1week"></my-data-loader>
 
 						<span class="data-label" ng-show="weather1week">
-							{{ weather1week.currently.temperature | number:0 | tempCelsius}}
-							<small>({{ weather1week.currently.apparentTemperature | number:0 | tempCelsius}}),</small>
+							{{ weather1week.currently.temperature | number:0 | tempCelsius}},
 							{{ weather1week.currently.summary }}
 						</span>
 					</p>
@@ -67,8 +67,7 @@
 						<my-data-loader data="weather10years"></my-data-loader>
 
 						<span class="data-label" ng-show="weather10years">
-							{{ weather10years.currently.temperature | number:0 | tempCelsius}}
-							<small>({{ weather10years.currently.apparentTemperature | number:0 | tempCelsius}}),</small>
+							{{ weather10years.currently.temperature | number:0 | tempCelsius}},
 							{{ weather10years.currently.summary }}
 						</span>
 					</p>
@@ -81,8 +80,7 @@
 						<my-data-loader data="weather25years"></my-data-loader>
 
 						<span class="data-label" ng-show="weather25years">
-							{{ weather25years.currently.temperature | number:0 | tempCelsius }}
-							<small>({{ weather25years.currently.apparentTemperature | number:0 | tempCelsius }}), </small>
+							{{ weather25years.currently.temperature | number:0 | tempCelsius }},
 							{{ weather25years.currently.summary }}
 						</span>
 					</p>
@@ -94,8 +92,12 @@
 			<div class="row footer">
 				<div class="col-xs-12">
 					<p>
-						&copy; 2016 Benjamin Singer |
-						Data provided by <a href="https://developers.google.com/maps/?hl=de" target="_blank">Google Maps</a> and <a href="https://forecast.io/" target="_blank">forecast.io</a> |
+						<span class="footer-block">&copy; 2016 Benjamin Singer</span>
+						<span class="footer-inline">&copy; 2016 Benjamin Singer |</span>
+
+						<span class="footer-block">Data provided by <a href="https://developers.google.com/maps/?hl=de" target="_blank">Google Maps</a> and <a href="https://forecast.io/" target="_blank">forecast.io</a></span>
+						<span class="footer-inline">Data provided by <a href="https://developers.google.com/maps/?hl=de" target="_blank">Google Maps</a> and <a href="https://forecast.io/" target="_blank">forecast.io</a> |</span>
+
 						<a href="#" data-toggle="modal" data-target="#impressum-modal">Impressum</a> |
 						<a href="#" data-toggle="modal" data-target="#datenschutz-modal">Datenschutz</a>
 					</p>

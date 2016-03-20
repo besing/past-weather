@@ -3,6 +3,7 @@
 
 
 // Vars for Bootstrap (including BS SASS a bit complicated)
+$screen-xs: 480px;
 $screen-sm: 768px;
 $screen-md: 992px;
 $screen-lg: 1200px;
@@ -40,7 +41,7 @@ body {
     .bg-darker {
         min-height: 100vh;
         position: relative; // for footer positioning
-        background: rgba(#000, 0.3);
+        background: rgba(#000, 0.4);
         padding-bottom: 110px;
     }
 
@@ -94,6 +95,14 @@ body {
             margin-bottom: 4px;
             font-size: 0.7em;
             opacity: 0.9;
+
+            small {
+                display: none;
+
+                @media (min-width: $screen-xs) {
+                    display: inline;
+                }
+            }
         }
 
         .data-value {
@@ -112,6 +121,23 @@ body {
 
         p:last-of-type {
             margin-bottom: 0;
+        }
+
+        .footer-inline {
+            display: none;
+
+            @media (min-width: $screen-xs) {
+                display: inline;
+            }
+        }
+
+        .footer-block {
+            display: block;
+            margin-bottom: 10px;
+
+            @media (min-width: $screen-xs) {
+                display: none;
+            }
         }
     }
 
