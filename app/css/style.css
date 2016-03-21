@@ -64,6 +64,12 @@ body {
         @media (min-width: 480px) {
           body .weather-info .data-label small {
             display: inline; } }
+  body #geo-error-modal .modal-content {
+    background: #d9534f;
+    color: #fff; }
+    body #geo-error-modal .modal-content button {
+      color: #fff;
+      opacity: 1; }
   body .footer {
     position: absolute;
     bottom: 0;
@@ -85,9 +91,9 @@ body {
       @media (min-width: 480px) {
         body .footer .footer-block {
           display: none; } }
-  body .modal {
+  body #impressum-modal {
     color: #555; }
-    body .modal a {
+    body #impressum-modal a {
       color: inherit; }
 
 /*# sourceMappingURL=style.css.map */

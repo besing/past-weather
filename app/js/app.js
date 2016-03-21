@@ -19,7 +19,7 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
                 var getCityObj = response.data;
                 $scope.getCityName = getCityObj.results[0].address_components[0].short_name;
 
-        // TODO: add caching! (working on local machine but not on Uberspace..?)
+        // TODO: add caching!
 
 
 // API CALL 2 (Current Weather)
@@ -139,8 +139,9 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
 
 
     }, function() {
-        // on error
-        console.log('Konnte keine Position ermitteln.');
+        // on HTML5 Geo Location Error
+        $('.city').html('<em>Kein Ort,<br />kein Wetter.</em>');
+        $('#geo-error-modal').modal();
     });
 
 }]);
@@ -183,5 +184,3 @@ app.directive('myDataLoader', function() {
        template: '<span class="data-label" ng-hide="hideIf"><em><small>(lade Daten...)</small></em></span>'
    };
 });
-
-

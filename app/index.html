@@ -8,12 +8,30 @@
 </head>
 <body ng-controller="WeatherCtrl" ng-style="bgImgCurrentWeather">
 	<div class="bg-darker">
+
+		<div class="modal fade" id="geo-error-modal" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">Standortbestimmung</h4>
+					</div>
+					<div class="modal-body">
+						<p>Du hast die <strong>Standortbestimmung abgelehnt</strong> (oder verwendest einen alten Browser). Leider kann das Wetter für deinen aktuellen Ort so nicht ermittelt werden.</p>
+						<p>Lade die Seite erneut oder aktiviere die Positionsbestimmung in den Einstellungen, um deinen Standort zu ermitteln.</p>
+						<p>In manchen Browsern ist es au&szlig;erdem notwendig, Wi-Fi zu aktivieren.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<div class="container">
 			<div class="row weather-info">
 				<h1 class="text-center">Wetterluchs</h1>
 				<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
 					<h2 class="city text-center">
-						<!--TODO: wird beim laden immer noch kurz als Code angezeigt...-->
 						{{ getCityName == '' ? geoCoordinates : getCityName }}<span class="glyphicon glyphicon-map-marker"></span>
 					</h2>
 					<p>
@@ -113,7 +131,9 @@
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
 						<h4 class="modal-title">Impressum</h4>
 					</div>
 					<div class="modal-body">

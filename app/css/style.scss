@@ -110,6 +110,18 @@ body {
         }
     }
 
+    #geo-error-modal {
+        .modal-content {
+            background: #d9534f;
+            color: #fff;
+
+            button {
+                color: #fff;
+                opacity: 1;
+            }
+        }
+    }
+
     .footer {
         position: absolute;
         bottom: 0;
@@ -141,7 +153,7 @@ body {
         }
     }
 
-    .modal {
+    #impressum-modal {
         color: #555;
 
         a {
