@@ -140,7 +140,7 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
 
     }, function() {
         // on HTML5 Geo Location Error
-        $('.city').html('<em>Kein Ort,<br />kein Wetter.</em>');
+        $('.city').html('<em>Kein Ort,<br />kein Wetter<br />:(</em>');
         $('#geo-error-modal').modal();
     });
 
