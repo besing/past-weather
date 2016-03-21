@@ -89,16 +89,6 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
 
                 $scope.unsplashPhoto = response.data;
 
-                var unsplashPhotoLocation;
-
-                if (response.data.location) {
-                    unsplashPhotoLocation = response.data.location.city + ', ' + response.data.location.country;
-                } else {
-                    unsplashPhotoLocation = 'No Photo Location provided'
-                }
-
-                //console.log('Photo location: ' + unsplashPhotoLocation); // TODO: Fallback if City doesn't exist (regularly!) (..or drop completely)
-
                 var unsplashRandImgUrl = response.data.urls.regular; // regular = 1080 w
 
                 $scope.bgImgCurrentWeather = {
