@@ -74,13 +74,19 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
                 }
 
                 // Add to Image Query: Background Image with optimum size for device orientation
+
                 var bgImageSize;
 
-                if (Math.abs(window.orientation) === 90 || screen.orientation.type === 'portrait-primary') { 
-                    // Landscape orientation
-                    bgImageSize = '&h=1000';
-                } else { 
+                if (window.orientation === 0 || window.orientation === 180) {
                     // Portrait orientation
+                    bgImageSize = '&h=1000';
+                } else if (screen.orientation) {
+                    if (screen.orientation.type === 'portrait-primary') {
+                        // Portrait orientation, too (No Mobile Safari, http://mzl.la/1RE3Vdb)
+                        bgImageSize = '&h=1000';
+                    }
+                } else {
+                    // Landscape orientation
                     bgImageSize = '&w=1000';
                 }
 
