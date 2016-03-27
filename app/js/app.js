@@ -75,7 +75,7 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
 
                 return $http({
                     method: 'GET',
-                    url: 'https://api.unsplash.com/photos/random?query=' + unsplashImgQuery + '&client_id=5a84b2ae1a2e983ee9e8850ac318152957f24614e0acb83896f7ba381ed6601f'
+                    url: 'https://api.unsplash.com/photos/random?query=' + unsplashImgQuery + '&client_id=5a84b2ae1a2e983ee9e8850ac318152957f24614e0acb83896f7ba381ed6601f&h=1000'
                 })
             })
 
@@ -89,7 +89,7 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
 
                 $scope.unsplashPhoto = response.data;
 
-                var unsplashRandImgUrl = response.data.urls.regular; // regular = 1080 w
+                var unsplashRandImgUrl = response.data.urls.custom; // custom = query param (see above), regular = 1080 w
 
                 $scope.bgImgCurrentWeather = {
                     'background-image': 'url(' + unsplashRandImgUrl + ')'
