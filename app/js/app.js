@@ -73,9 +73,20 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
                         console.log('Forecast Icon Error!');
                 }
 
+                // Add to Image Query: Background Image with optimum size for device orientation
+                var bgImageSize;
+
+                if (Math.abs(window.orientation) === 90 || screen.orientation.type === 'portrait-primary') { 
+                    // Landscape orientation
+                    bgImageSize = '&h=1000';
+                } else { 
+                    // Portrait orientation
+                    bgImageSize = '&w=1000';
+                }
+
                 return $http({
                     method: 'GET',
-                    url: 'https://api.unsplash.com/photos/random?query=' + unsplashImgQuery + '&client_id=5a84b2ae1a2e983ee9e8850ac318152957f24614e0acb83896f7ba381ed6601f&h=1000'
+                    url: 'https://api.unsplash.com/photos/random?query=' + unsplashImgQuery + '&client_id=5a84b2ae1a2e983ee9e8850ac318152957f24614e0acb83896f7ba381ed6601f' + bgImageSize
                 })
             })
 
@@ -89,7 +100,8 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
 
                 $scope.unsplashPhoto = response.data;
 
-                var unsplashRandImgUrl = response.data.urls.custom; // custom = query param (see above), regular = 1080 w
+                var unsplashRandImgUrl = response.data.urls.custom;
+                // urls.custom = query param (see above), urls.regular = 1080 w
 
                 $scope.bgImgCurrentWeather = {
                     'background-image': 'url(' + unsplashRandImgUrl + ')'
