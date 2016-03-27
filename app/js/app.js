@@ -74,20 +74,34 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
                 }
 
                 // Add to Image Query: Background Image with optimum size for device orientation
+                // First check if browser support, then check value // TODO: any better way to do that?
 
+                var deviceOrientationSafari = window.orientation;
+                var deviceOrientationNoSafari = screen.orientation;
                 var bgImageSize;
 
-                if (window.orientation === 0 || window.orientation === 180) {
-                    // Portrait orientation
-                    bgImageSize = '&h=1000';
-                } else if (screen.orientation) {
-                    if (screen.orientation.type === 'portrait-primary') {
+                if (deviceOrientationSafari) {
+                    if (deviceOrientationSafari === 0 || deviceOrientationSafari === 180) {
+                        // Portrait orientation
+                        bgImageSize = '&h=1000';
+                        console.log(1);
+                    } else {
+                        bgImageSize = '&w=1000';
+                        console.log('1b');
+                    }
+                } else if (deviceOrientationNoSafari) {
+                    if (deviceOrientationNoSafari.type === 'portrait-primary') {
                         // Portrait orientation, too (No Mobile Safari, http://mzl.la/1RE3Vdb)
                         bgImageSize = '&h=1000';
+                        console.log(2);
+                    } else {
+                        bgImageSize = '&w=1000';
+                        console.log(deviceOrientationNoSafari);
                     }
                 } else {
                     // Landscape orientation
                     bgImageSize = '&w=1000';
+                    console.log(3);
                 }
 
                 return $http({
