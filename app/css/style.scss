@@ -122,6 +122,19 @@ body {
         }
     }
 
+    #refresh-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #ddd;
+        background-color: rgba(#fff, 0.25);
+        border: none;
+
+        .no-touchevents & {
+            display: none;
+        }
+    }
+
     .footer {
         position: absolute;
         bottom: 0;

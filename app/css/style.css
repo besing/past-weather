@@ -70,6 +70,15 @@ body {
     body #geo-error-modal .modal-content button {
       color: #fff;
       opacity: 1; }
+  body #refresh-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #ddd;
+    background-color: rgba(255, 255, 255, 0.25);
+    border: none; }
+    .no-touchevents body #refresh-button {
+      display: none; }
   body .footer {
     position: absolute;
     bottom: 0;
