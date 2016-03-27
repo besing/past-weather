@@ -74,39 +74,24 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
                 }
 
                 // Add to Image Query: Background Image with optimum size for device orientation
-                // First check if browser support, then check value // TODO: any better way to do that?
+                // Implemented via viewport dimension comparison (easier than device-orientation + desktop browser compatible)
 
-                var deviceOrientationSafari = window.orientation;
-                var deviceOrientationNoSafari = screen.orientation;
-                var bgImageSize;
+                var viewportWidth = window.innerWidth;
+                var viewportHeight = window.innerHeight;
+                var bgImageOrientation;
 
-                if (deviceOrientationSafari) {
-                    if (deviceOrientationSafari === 0 || deviceOrientationSafari === 180) {
-                        // Portrait orientation
-                        bgImageSize = '&h=1000';
-                        console.log(1);
-                    } else {
-                        bgImageSize = '&w=1000';
-                        console.log('1b');
-                    }
-                } else if (deviceOrientationNoSafari) {
-                    if (deviceOrientationNoSafari.type === 'portrait-primary') {
-                        // Portrait orientation, too (No Mobile Safari, http://mzl.la/1RE3Vdb)
-                        bgImageSize = '&h=1000';
-                        console.log(2);
-                    } else {
-                        bgImageSize = '&w=1000';
-                        console.log(deviceOrientationNoSafari);
-                    }
+                if (viewportHeight > viewportWidth){
+                    // Portrait orientation / viewport
+                    bgImageOrientation = '&h=1000';
                 } else {
-                    // Landscape orientation
-                    bgImageSize = '&w=1000';
-                    console.log(3);
+                    // Landscape orientation / viewport
+                    bgImageOrientation = '&w=1000';
                 }
+
 
                 return $http({
                     method: 'GET',
-                    url: 'https://api.unsplash.com/photos/random?query=' + unsplashImgQuery + '&client_id=5a84b2ae1a2e983ee9e8850ac318152957f24614e0acb83896f7ba381ed6601f' + bgImageSize
+                    url: 'https://api.unsplash.com/photos/random?query=' + unsplashImgQuery + '&client_id=5a84b2ae1a2e983ee9e8850ac318152957f24614e0acb83896f7ba381ed6601f' + bgImageOrientation
                 })
             })
 
