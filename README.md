@@ -1,6 +1,6 @@
 ## Wetterluchs 
-### v0.2
+### v0.3
 
-http://wetterluchs.benjaminsinger.de
+https://wetterluchs.benjaminsinger.de
 
-Angular based Weather App which gets current & historical weather data for your current position
+Angular based Web App which gets current & historical weather data for your current position

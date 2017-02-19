@@ -25,7 +25,7 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
 // API CALL 2 (Current Weather)
                 return $http({
                     method: 'JSONP',
-                    url: 'https://api.forecast.io/forecast/1d96cc3ef09464128ca17edb27b686c6/' + $scope.geoCoordinates + '?units=si&lang=de&callback=JSON_CALLBACK'})
+                    url: 'https://api.darksky.net/forecast/1d96cc3ef09464128ca17edb27b686c6/' + $scope.geoCoordinates + '?units=si&lang=de&callback=JSON_CALLBACK'})
             })
 
             .then(function(response) {
@@ -115,7 +115,7 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
 // API CALL 3 (Historical Weather I)
                 return $http({
                     method: 'JSONP',
-                    url: 'https://api.forecast.io/forecast/1d96cc3ef09464128ca17edb27b686c6/' + $scope.geoCoordinates + ',' + timeAgo.timeAgoFunc(7) + '?units=si&lang=de&callback=JSON_CALLBACK'
+                    url: 'https://api.darksky.net/forecast/1d96cc3ef09464128ca17edb27b686c6/' + $scope.geoCoordinates + ',' + timeAgo.timeAgoFunc(7) + '?units=si&lang=de&callback=JSON_CALLBACK'
                 })
 
             })
@@ -126,7 +126,7 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
 // API CALL 4 (Historical Weather II)
                 return $http({
                     method: 'JSONP',
-                    url: 'https://api.forecast.io/forecast/1d96cc3ef09464128ca17edb27b686c6/' + $scope.geoCoordinates + ',' + timeAgo.timeAgoFunc(10 * 365 + 2) + '?units=si&lang=de&callback=JSON_CALLBACK'
+                    url: 'https://api.darksky.net/forecast/1d96cc3ef09464128ca17edb27b686c6/' + $scope.geoCoordinates + ',' + timeAgo.timeAgoFunc(10 * 365 + 2) + '?units=si&lang=de&callback=JSON_CALLBACK'
                 })
             })
 
@@ -136,7 +136,7 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
 // API CALL 5 (Historical Weather III)
                 return $http({
                     method: 'JSONP',
-                    url: 'https://api.forecast.io/forecast/1d96cc3ef09464128ca17edb27b686c6/' + $scope.geoCoordinates + ',' + timeAgo.timeAgoFunc(25 * 365 + 6) + '?units=si&lang=de&callback=JSON_CALLBACK'
+                    url: 'https://api.darksky.net/forecast/1d96cc3ef09464128ca17edb27b686c6/' + $scope.geoCoordinates + ',' + timeAgo.timeAgoFunc(25 * 365 + 6) + '?units=si&lang=de&callback=JSON_CALLBACK'
                 })
             })
 
