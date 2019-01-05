@@ -1,5 +1,4 @@
-## Wetterluchs 
-### v0.3
+## Wetterluchs
 
 https://wetterluchs.benjaminsinger.de
 
