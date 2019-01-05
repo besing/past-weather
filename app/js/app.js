@@ -82,16 +82,16 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
 
                 if (viewportHeight > viewportWidth){
                     // Portrait orientation / viewport
-                    bgImageOrientation = '&h=1000';
+                    bgImageOrientation = '&portrait&h=1500';
                 } else {
                     // Landscape orientation / viewport
-                    bgImageOrientation = '&w=1000';
+                    bgImageOrientation = '&landscape&w=1500';
                 }
 
 
                 return $http({
                     method: 'GET',
-                    url: 'https://api.unsplash.com/photos/random?query=' + unsplashImgQuery + '&client_id=5a84b2ae1a2e983ee9e8850ac318152957f24614e0acb83896f7ba381ed6601f' + bgImageOrientation
+                    url: 'https://api.unsplash.com/photos/random?query=' + unsplashImgQuery + '&client_id=d32b8adab52325430c36a2ea73ceb0693489a953762b1ed7be044aa249070807' + bgImageOrientation
                 })
             })
 
