@@ -98,15 +98,15 @@
 					</p>
 					<p>
 						<span class="data-label">
-							Wetter heute vor <strong>25 Jahren</strong>
-							<small ng-show="weather25years">({{ weather25years.currently.time * 1000 | date:'d.M.yyyy' }})</small>
+							Wetter heute vor <strong>20 Jahren</strong>
+							<small ng-show="weather20years">({{ weather20years.currently.time * 1000 | date:'d.M.yyyy' }})</small>
 						</span>
 
-						<my-data-loader data="weather25years"></my-data-loader>
+						<my-data-loader data="weather20years"></my-data-loader>
 
-						<span class="data-label" ng-show="weather25years">
-							{{ weather25years.currently.temperature | number:0 | tempCelsius }},
-							{{ weather25years.currently.summary }}
+						<span class="data-label" ng-show="weather20years">
+							{{ weather20years.currently.temperature | number:0 | tempCelsius }},
+							{{ weather20years.currently.summary }}
 						</span>
 					</p>
 				</div>

@@ -136,12 +136,12 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
 // API CALL 5 (Historical Weather III)
                 return $http({
                     method: 'JSONP',
-                    url: 'https://api.darksky.net/forecast/1d96cc3ef09464128ca17edb27b686c6/' + $scope.geoCoordinates + ',' + timeAgo.timeAgoFunc(25 * 365 + 6) + '?units=si&lang=de&callback=JSON_CALLBACK'
+                    url: 'https://api.darksky.net/forecast/1d96cc3ef09464128ca17edb27b686c6/' + $scope.geoCoordinates + ',' + timeAgo.timeAgoFunc(20 * 365 + 6) + '?units=si&lang=de&callback=JSON_CALLBACK'
                 })
             })
 
             .then(function (response) {
-                $scope.weather25years = response.data;
+                $scope.weather20years = response.data;
             })
 
 
