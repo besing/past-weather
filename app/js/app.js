@@ -13,11 +13,11 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
 
         $http({
             method: 'GET',
-            url: 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + $scope.geoCoordinates + '&result_type=locality&key=AIzaSyCg3yL1Xhg-f9twY7PS7kDLzM-0SKBwHCY'})
+            url: 'https://eu1.locationiq.com/v1/reverse.php?key=79991f8165f2a7&lat=' + geoLat + '&lon=' + geoLong + '&format=json&normalizecity=1'})
 
             .then(function (response) {
                 var getCityObj = response.data;
-                $scope.getCityName = getCityObj.results[0].address_components[0].short_name;
+                $scope.getCityName = getCityObj.address.city;
 
         // TODO: add caching!
 
