@@ -1,0 +1,23 @@
+{
+	"name": "wetterluchs",
+	"version": "1.0.0",
+	"description": "Angular based Weather Web App",
+	"main": "index.html",
+	"scripts": {
+		"build": "browserify app/js/app.js > app/bundle.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/besing/wetterluchs.git"
+	},
+	"author": "Benjamin Singer",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/besing/wetterluchs/issues"
+	},
+	"homepage": "https://github.com/besing/wetterluchs#readme",
+	"dependencies": {
+		"browserify": "^16.2.3"
+	}
+}

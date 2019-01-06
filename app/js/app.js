@@ -1,3 +1,5 @@
+var API_CREDENTIALS = require('../API_KEYS.js');
+
 var app = angular.module('wetterLuchs', []);
 
 // Controller with several API calls (dependent on e.a.) ("Promises-Chaining")
@@ -13,7 +15,7 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
 
         $http({
             method: 'GET',
-            url: 'https://eu1.locationiq.com/v1/reverse.php?key=79991f8165f2a7&lat=' + geoLat + '&lon=' + geoLong + '&format=json&normalizecity=1'})
+            url: 'https://eu1.locationiq.com/v1/reverse.php?key=' + API_CREDENTIALS.LOCATIONIQ + '&lat=' + geoLat + '&lon=' + geoLong + '&format=json&normalizecity=1'})
 
             .then(function (response) {
                 var getCityObj = response.data;
@@ -25,7 +27,7 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
 // API CALL 2 (Current Weather)
                 return $http({
                     method: 'JSONP',
-                    url: 'https://api.darksky.net/forecast/1d96cc3ef09464128ca17edb27b686c6/' + $scope.geoCoordinates + '?units=si&lang=de&callback=JSON_CALLBACK'})
+                    url: 'https://api.darksky.net/forecast/' + API_CREDENTIALS.DARKSKY + '/' + $scope.geoCoordinates + '?units=si&lang=de&callback=JSON_CALLBACK'})
             })
 
             .then(function(response) {
@@ -91,7 +93,7 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
 
                 return $http({
                     method: 'GET',
-                    url: 'https://api.unsplash.com/photos/random?query=' + unsplashImgQuery + '&client_id=d32b8adab52325430c36a2ea73ceb0693489a953762b1ed7be044aa249070807' + bgImageOrientation
+                    url: 'https://api.unsplash.com/photos/random?query=' + unsplashImgQuery + '&client_id=' + API_CREDENTIALS.UNSPLASH + bgImageOrientation
                 })
             })
 
@@ -115,7 +117,7 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
 // API CALL 3 (Historical Weather I)
                 return $http({
                     method: 'JSONP',
-                    url: 'https://api.darksky.net/forecast/1d96cc3ef09464128ca17edb27b686c6/' + $scope.geoCoordinates + ',' + timeAgo.timeAgoFunc(7) + '?units=si&lang=de&callback=JSON_CALLBACK'
+                    url: 'https://api.darksky.net/forecast/' + API_CREDENTIALS.DARKSKY + '/' + $scope.geoCoordinates + ',' + timeAgo.timeAgoFunc(7) + '?units=si&lang=de&callback=JSON_CALLBACK'
                 })
 
             })
@@ -126,7 +128,7 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
 // API CALL 4 (Historical Weather II)
                 return $http({
                     method: 'JSONP',
-                    url: 'https://api.darksky.net/forecast/1d96cc3ef09464128ca17edb27b686c6/' + $scope.geoCoordinates + ',' + timeAgo.timeAgoFunc(10 * 365 + 2) + '?units=si&lang=de&callback=JSON_CALLBACK'
+                    url: 'https://api.darksky.net/forecast/' + API_CREDENTIALS.DARKSKY + '/' + $scope.geoCoordinates + ',' + timeAgo.timeAgoFunc(10 * 365 + 2) + '?units=si&lang=de&callback=JSON_CALLBACK'
                 })
             })
 
@@ -136,7 +138,7 @@ app.controller('WeatherCtrl', ['$scope', '$http', 'timeAgo', function($scope, $h
 // API CALL 5 (Historical Weather III)
                 return $http({
                     method: 'JSONP',
-                    url: 'https://api.darksky.net/forecast/1d96cc3ef09464128ca17edb27b686c6/' + $scope.geoCoordinates + ',' + timeAgo.timeAgoFunc(20 * 365 + 6) + '?units=si&lang=de&callback=JSON_CALLBACK'
+                    url: 'https://api.darksky.net/forecast/' + API_CREDENTIALS.DARKSKY + '/' + $scope.geoCoordinates + ',' + timeAgo.timeAgoFunc(20 * 365 + 6) + '?units=si&lang=de&callback=JSON_CALLBACK'
                 })
             })
 
