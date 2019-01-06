@@ -44,3 +44,7 @@ crashlytics-build.properties
 fabric.properties
 
 .idea/
+
+/node_modules
+/app/API_KEYS.js
+/app/bundle.js
